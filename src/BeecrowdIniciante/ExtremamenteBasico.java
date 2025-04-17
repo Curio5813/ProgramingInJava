@@ -1,4 +1,4 @@
-package Iniciante;
+package BeecrowdIniciante;
 
 import java.util.Scanner;
 
