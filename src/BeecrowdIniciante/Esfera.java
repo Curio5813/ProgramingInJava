@@ -40,7 +40,7 @@ public class Esfera {
 		
 		volume = Math.pow(raio, 3) * (4/3.0) * pi;
 		
-		System.out.printf("VOLUME = %.3f", volume);
+		System.out.printf("VOLUME = %.3f\n", volume);
 		
 		teclado.close();
 		
