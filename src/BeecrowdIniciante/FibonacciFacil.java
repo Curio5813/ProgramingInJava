@@ -25,6 +25,8 @@ public class FibonacciFacil {
 			p = a + b;
 			
 		}
+		
+		teclado.close();
 
 	}
 
