@@ -15,25 +15,25 @@ public class CoordenadasDeUmPonto {
 		y = Double.parseDouble(teclado.next());
 		
 		if(x == 0 && y == 0) {
-			System.out.println("Origem\n");
+			System.out.println("Origem");
 		}
-		if(x > 0 && y > 0) {
-			System.out.println("Q1\n");
+		else if(x > 0 && y > 0) {
+			System.out.println("Q1");
 		}
-		if(x < 0 && y > 0) {
-			System.out.println("Q2\n");
+		else if(x < 0 && y > 0) {
+			System.out.println("Q2");
 		}
-		if(x < 0 && y < 0) {
-			System.out.println("Q3\n");
+		else if(x < 0 && y < 0) {
+			System.out.println("Q3");
 		}
-		if(x > 0 && y < 0) {
-			System.out.println("Q4\n");
+		else if(x > 0 && y < 0) {
+			System.out.println("Q4");
 		}
-		if(x == 0 && y > 0 || y < 0) {
-			System.out.println("Eixo Y\n");
+		else if(x == 0 && y > 0 || y < 0) {
+			System.out.println("Eixo Y");
 		}
-		if(x > 0 || x < 0 && y == 0.0) {
-			System.out.println("Eixo X\n");
+		else if(x > 0 || x < 0 && y == 0.0) {
+			System.out.println("Eixo X");
 		}
 		
 		teclado.close();
