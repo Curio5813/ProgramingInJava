@@ -52,19 +52,19 @@ public class AumentoDeSalario {
 		System.out.printf("Novo salario: %.2f\n", salario);
 		System.out.printf("Reajuste ganho: %.2f\n", reajuste);
 		if(flag == 1) {
-			System.out.println("Em percetual: 15%");
+			System.out.println("Em percentual: 15 %");
 		}
 		else if(flag == 2) {
-			System.out.println("Em percetual: 12%");
+			System.out.println("Em percentual: 12 %");
 		}
 		else if(flag == 3) {
-			System.out.println("Em percetual: 10%");
+			System.out.println("Em percentual: 10 %");
 		}
 		else if(flag == 4) {
-			System.out.println("Em percetual: 7%");
+			System.out.println("Em percentual: 7 %");
 		}
 		else if(flag == 5) {
-			System.out.println("Em percetual: 4%");
+			System.out.println("Em percentual: 4 %");
 		}
 		
 		teclado.close();
@@ -72,3 +72,4 @@ public class AumentoDeSalario {
 	}
 
 }
+
