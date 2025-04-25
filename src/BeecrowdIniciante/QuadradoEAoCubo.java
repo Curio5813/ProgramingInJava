@@ -17,6 +17,7 @@ public class QuadradoEAoCubo {
 			System.out.println(i + " " + i * i + " " +  i * i * i);
 		}
 		
+		teclado.close();
 	}
 
 }
