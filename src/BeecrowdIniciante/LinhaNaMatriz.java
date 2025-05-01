@@ -23,7 +23,7 @@ public class LinhaNaMatriz {
 		
 		char c = t.charAt(0);
 		
-		double[][] matriz = new double[12][12];
+		double matriz[][] = new double[12][12];
 		double soma;
 		OptionalDouble media;
 		
