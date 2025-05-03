@@ -7,12 +7,12 @@ public class Fibonot {
 	
 	public static void main(String[] args) {
 		
-		long[] fibnot = new long[100_500];
-		long[] fibo = new long[100_500];
-		long a = 1, b = 1, c = a + b, temp = 3;
+		long[] fibnot = new long[100_100];
+		long[] fibo = new long[100_100];
+		long a = 1, b = 1, c = a + b;
 		int idx1 = 0, idx2;
 
-		for(int i = 0; i < 100; i++) {
+		for(int i = 0; i < 1000; i++) {
 			
 			fibo[i] = a;
 			a = b;
@@ -20,7 +20,7 @@ public class Fibonot {
 			c = a + b;
 			
 		}
-		for(int i = 1; i < 100_500; i++) {
+		for(int i = 1; i < 100_100; i++) {
 			final long val  = i;
 			int flag = 0;
 			for(int j = 0; j < 1000; j++) {
