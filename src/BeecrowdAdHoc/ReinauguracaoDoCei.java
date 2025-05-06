@@ -27,13 +27,11 @@ public class ReinauguracaoDoCei {
 				festa[i] = Integer.parseInt(teclado.next());
 			}
 			Arrays.sort(festa);
-			//System.out.println(festa[0]);
 			
 			for (int i = 0; i < simultaneos; i++) {
 			    int j = n - 1 - i;
 			    tempo[i] = festa[j] - festa[i];
 			    
-			    //System.out.println(festa[j] + " " + festa[i]);
 			}
 	
 			Arrays.sort(tempo);
