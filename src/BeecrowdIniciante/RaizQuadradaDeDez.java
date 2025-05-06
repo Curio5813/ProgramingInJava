@@ -3,6 +3,7 @@ package BeecrowdIniciante;
 import java.util.Scanner;
 import java.util.Locale;
 
+
 public class RaizQuadradaDeDez {
 	
 	public static void main(String[] args) {
