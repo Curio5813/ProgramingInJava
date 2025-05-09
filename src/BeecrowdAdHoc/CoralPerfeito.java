@@ -1,8 +1,7 @@
 package BeecrowdAdHoc;
 
 import java.util.Scanner;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Arrays;
 
 
 public class CoralPerfeito {
@@ -28,12 +27,7 @@ public class CoralPerfeito {
 			}
 			if(soma % n == 0) {
 				unissono = soma / n;
-				Set<Integer> distintas = new HashSet<>();
-				for(int j = 0; j < n; j++) {
-					distintas.add(notas[j]);
-					if(distintas.size() == 0) {
-						break;
-					}
+				while(Arrays.stream(notas).distinct().count() != 1) {
 					while(notas[k] != unissono) {
 						notas[k] += 1;
 						notas[i] -= 1;
@@ -51,8 +45,7 @@ public class CoralPerfeito {
 			else {
 				System.out.println(-1);
 			}
-			
-			
+					
 		}
 		
 		teclado.close();
