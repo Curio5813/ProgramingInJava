@@ -10,7 +10,6 @@ public class CoralPerfeito {
 		
 		Scanner teclado = new Scanner(System.in);
 		
-		
 		while(teclado.hasNextInt()) {
 			
 			int n, soma = 0, unissono = 0, compasso = 1;
