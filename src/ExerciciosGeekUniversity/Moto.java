@@ -17,7 +17,7 @@ public class Moto {
 		System.out.println("Marca: " + this.marca);
 		System.out.println("Modelo: " + this.modelo);
 		System.out.println("Cor: " + this.cor);
-		System.out.println("Marcha: " + this.marcha);
+		System.out.println("Marcha: " + this.getMarcha());
 		
 	}
 	
@@ -39,7 +39,7 @@ public class Moto {
 	
 	
 	public void trocarMarcha(int valor) {
-		this.marcha = 0 + valor;
+		this.marcha = this.marcha + valor;
 		
 		System.out.println("Marcha atual: " + this.getMarcha());
 	}
