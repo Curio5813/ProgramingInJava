@@ -31,6 +31,9 @@ public class SequenciasDeGranizo {
 			h = teclado.nextInt();
 		}
 		
+		teclado.close();
+		
 	}
 
 }
+
