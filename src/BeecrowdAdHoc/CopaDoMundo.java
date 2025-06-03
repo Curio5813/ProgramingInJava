@@ -1,6 +1,6 @@
 package BeecrowdAdHoc;
 
-import java.util.InputMismatchException;
+
 import java.util.Scanner;
 
 
@@ -15,7 +15,9 @@ public class CopaDoMundo {
             int t = teclado.nextInt();
             int n = teclado.nextInt();
             
-            if (t == 0 && n == 0) break;
+            if (t == 0 && n == 0) {
+            	break;
+            }
 
             int soma = 0;
             for (int i = 0; i < t; i++) {
