@@ -17,11 +17,11 @@ public class oSalaoDoClube {
 		n = teclado.nextInt();
 		
 		while(m != 0 && n != 0) {
-			area = m * n;
+			area = m * n * 100;
 			largura = teclado.nextInt();
 			qtd_tabuas = teclado.nextInt();
 			
-			if((m * n * 100) % largura != 0) {
+			if(area % largura != 0) {
 				System.out.println("impossivel");
 			}
 			else {
@@ -40,7 +40,7 @@ public class oSalaoDoClube {
 						if(i == 0 && invertida.get(i) == m) {
 							numeroTabuas += 1;
 							soma += invertida.get(i);
-							if(soma == area) {
+							if(soma * largura == area) {
 								respostas.add(numeroTabuas);
 								caso = true;
 								break;
@@ -50,7 +50,7 @@ public class oSalaoDoClube {
 						else if(invertida.get(i) == m) {
 							numeroTabuas += 1;
 							soma += invertida.get(i);
-							if(soma == area) {
+							if(soma * largura == area) {
 								respostas.add(numeroTabuas);
 								caso = true;
 								break;
@@ -61,7 +61,7 @@ public class oSalaoDoClube {
 						else if(invertida.get(i) + tabuas.get(j) == m) {
 							numeroTabuas += 2;
 							soma += invertida.get(i) + tabuas.get(j);
-							if(soma == area) {
+							if(soma * largura == area) {
 								respostas.add(numeroTabuas);
 								caso = true;
 								break;
@@ -83,7 +83,7 @@ public class oSalaoDoClube {
 						if(i == 0 && invertida.get(i) == n) {
 							numeroTabuas += 1;
 							soma += invertida.get(i);
-							if(soma == area) {
+							if(soma * largura == area) {
 								respostas.add(numeroTabuas);
 								caso = true;
 								break;
@@ -93,7 +93,7 @@ public class oSalaoDoClube {
 						else if(invertida.get(i) == n) {
 							numeroTabuas += 1;
 							soma += invertida.get(i);
-							if(soma == area) {
+							if(soma * largura == area) {
 								respostas.add(numeroTabuas);
 								caso = true;
 								break;
@@ -104,7 +104,7 @@ public class oSalaoDoClube {
 						else if(invertida.get(i) + tabuas.get(j) == n) {
 							numeroTabuas += 2;
 							soma += invertida.get(i) + tabuas.get(j);
-							if(soma == area) {
+							if(soma * largura == area) {
 								respostas.add(numeroTabuas);
 								caso = true;
 								break;
