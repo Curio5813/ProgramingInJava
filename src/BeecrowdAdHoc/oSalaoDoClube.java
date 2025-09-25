@@ -10,7 +10,6 @@ public class oSalaoDoClube {
 		
 		Scanner teclado = new Scanner(System.in);
 		
-		
 		while (true) {
             int m = teclado.nextInt();
             int n = teclado.nextInt();
@@ -73,6 +72,7 @@ public class oSalaoDoClube {
 	                break;
 	            }
 	        }
+	        
 	        return null;
 	}
 
