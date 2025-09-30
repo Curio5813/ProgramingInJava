@@ -34,11 +34,12 @@ public class Estacionamento {
                     
                 } else if (evento[0].equals("S")) {
                     String placaSaida = evento[1];
-                    for (int j = 0; j < carros.size(); j++) {
-                        String[] c = carros.get(j);
+                    Iterator<String[]> it = carros.iterator();
+                    while (it.hasNext()) {
+                        String[] c = it.next();
                         if (c[0].equals("C") && c[1].equals(placaSaida)) {
                             espaco += Integer.parseInt(c[2]);
-                            carros.remove(j);
+                            it.remove();
                             break;
                         }
                     }
