@@ -3,7 +3,6 @@ package BeecrowdAdHoc;
 import java.util.Scanner;
 
 
-
 public class desenhandoOEdificio {
 	
 	public static void main(String[] args) {
