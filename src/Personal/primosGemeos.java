@@ -6,11 +6,17 @@ public class primosGemeos {
 
     public static void main(String[] args) {
 
+        Scanner teclado = new Scanner(System.in);
+
+        int n;
+        System.out.print("Digite o limte: ");
+        n = teclado.nextInt();
+
         List<Integer> primos = new ArrayList<>();
         List<List<Integer>> gemeos = new ArrayList<>();
         List<Integer> dist = new ArrayList<>();
-        for (int i = 2; i <= 200000; i++) {
-            for (int j = 2; j <= 200000; j++) {
+        for (int i = 2; i <= n; i++) {
+            for (int j = 2; j <= n; j++) {
                 if (i % j == 0 && i != j) {
                     break;
                 }
