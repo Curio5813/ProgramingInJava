@@ -2,7 +2,7 @@ package Personal;
 
 import java.util.*;
 
-public class primosGemos {
+public class primosGemeos {
 
     public static void main(String[] args) {
 
