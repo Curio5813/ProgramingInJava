@@ -75,6 +75,7 @@ public class primosGemeos2 {
         System.out.println("\nMaior distância encontrada:");
         System.out.println(g[0] + " " + g[1] + " " + (g[1] + maiorDist) +
                 " = " + maiorDist);
-    }
 
+        teclado.close();
+    }
 }

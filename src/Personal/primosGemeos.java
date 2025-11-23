@@ -60,5 +60,7 @@ public class primosGemeos {
 
         System.out.println("Maior distância encontrada:");
         System.out.println(gemeos.get(maior_idx).get(0) + " " + gemeos.get(maior_idx).get(1) + " " + (gemeos.get(maior_idx).get(1) +  dist.get(maior_idx)) + " = " + dist.get(maior_idx));
+
+        teclado.close();
     }
 }
