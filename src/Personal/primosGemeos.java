@@ -13,16 +13,18 @@ public class primosGemeos {
         n = teclado.nextInt();
 
         List<Integer> primos = new ArrayList<>();
+        Set<Integer> nao_primo = new HashSet<>();
         List<List<Integer>> gemeos = new ArrayList<>();
         List<Integer> dist = new ArrayList<>();
         for (int i = 2; i <= n; i++) {
-            for (int j = 2; j <= n; j++) {
-                if (i % j == 0 && i != j) {
-                    break;
-                }
-                if (i % j == 0 && i == j) {
-                    primos.add(i);
-                }
+            if(nao_primo.contains(i)){
+                continue;
+            }
+            else{
+                primos.add(i);
+            }
+            for (int j = i * 2; j <= n; j += i) {
+                nao_primo.add(j);
             }
         }
         for (int i = 0; i < primos.size(); i++) {
