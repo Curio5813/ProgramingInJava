@@ -9,7 +9,7 @@ public class primosGemeos {
         Scanner teclado = new Scanner(System.in);
 
         int n;
-        System.out.print("Digite o limte: ");
+        System.out.print("Digite o limite: ");
         n = teclado.nextInt();
 
         List<Integer> primos = new ArrayList<>();
