@@ -27,15 +27,12 @@ public class primosGemeos {
                 nao_primo.add(j);
             }
         }
-        for (int i = 0; i < primos.size(); i++) {
-            for (int j = 0; j < primos.size(); j++) {
+        for (int i = 1; i < primos.size(); i++) {
+            if (primos.get(i) - primos.get(i - 1) == 2) {
                 List<Integer> temp = new ArrayList<>();
-                if (i != j && primos.get(i) - primos.get(j) == 2) {
-                    temp.add(primos.get(j));
-                    temp.add(primos.get(i));
-                    gemeos.add(temp);
-                    break;
-                }
+                temp.add(primos.get(i - 1));
+                temp.add(primos.get(i));
+                gemeos.add(temp);
             }
         }
         for (int i = 0; i < gemeos.size(); i++) {
