@@ -29,15 +29,13 @@ public class numerosTristes {
         }
         for (int n = 1; n <= limite; n++) {
             int soma = 0;
-            int num = n;
             for (int d = n - 1; d >= 1; d--) {
                 if (n % d == 0) {
                     soma += d;
                 }
             }
-            boolean num2 = primos.contains(soma);
-            if (num2) {
-                System.out.printf("%d é triste → soma=%d.%n", num, soma);
+            if (primos.contains(soma)) {
+                System.out.printf("%d é triste → soma=%d.%n", n, soma);
                 if (n % 2 == 0) {
                     pares.add(n);
                 }
