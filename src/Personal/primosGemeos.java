@@ -57,6 +57,7 @@ public class primosGemeos {
         int maiorValor = Collections.max(dist);
         int maior_idx = dist.indexOf(maiorValor);
 
+        System.out.println(gemeos.size());
         System.out.println("Maior distância encontrada:");
         System.out.println(gemeos.get(maior_idx).get(0) + " " + gemeos.get(maior_idx).get(1) + " " + (gemeos.get(maior_idx).get(1) +  dist.get(maior_idx)) + " = " + dist.get(maior_idx));
 
