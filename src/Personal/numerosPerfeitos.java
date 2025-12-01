@@ -9,6 +9,9 @@ public class numerosPerfeitos {
             for(int j = i - 1; j >= 1; j--){
                 if(i % j == 0){
                     soma += j;
+                    if(soma > i){
+                        break;
+                    }
                 }
             }
             if(soma == i){
