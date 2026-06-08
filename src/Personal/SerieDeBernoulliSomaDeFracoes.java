@@ -14,6 +14,7 @@ public class SerieDeBernoulliSomaDeFracoes {
 }
 
 /*
-100 bilhões ou 10¹¹ é igual a 25,9056516865, expoente primos vão direcionar a convergência da
-série. O Resultado deve ser igual há (5(√2π²)/3)³, converge para 406.0138611108578 .
+100 bilhões ou 10¹¹ é igual a 25,9056516865, os numeros primos e seus expoente primos
+vão direcionar a convergência da série. O Resultado deve ser igual há (5(√2π²)/3)³,
+converge para 406.0138611108578 .
 */
