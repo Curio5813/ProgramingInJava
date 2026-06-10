@@ -16,13 +16,11 @@ public class SerieDeBernoulliSomaDeFracoes {
 /*
 100 bilhões ou 10¹¹ é igual a 25,9056516865, os numeros primos e seus expoente
 vão direcionar a convergência da série. O Resultado deve ser igual há (5(√2π²)/3)³,
-converge para 406.0138611108578 . Assim:
+converge para 406.0138611108578 . Assim a razão do somátório de todos os numeros irracionais
+pelo somatório de todos os numeros racionais é dado por:
 
-  ∫_(ℝ \ ℚ) x dμ(x)      250√2π⁶
- ─────────────────── = ───────────
-    ∫_(ℚ) x dμ(x)          27
+  ∫_(ℝ \ ℚ) x dμ(x)
+ ─────────────────── = 250√2π⁶ / 27
+   ∫_(ℚ) x dμ(x)
 
- Representação:
- Numerador (Irracionais): ∫_(ℝ \ ℚ) x dμ(x) = 250√2π⁶
- Denominador (Racionais): ∫_(ℚ) x dμ(x) = 27
 */
