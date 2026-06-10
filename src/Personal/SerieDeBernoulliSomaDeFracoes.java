@@ -20,7 +20,7 @@ converge para 406.0138611108578 . Assim a razão do somátório de todos os nume
 pelo somatório de todos os numeros racionais é dado por:
 
   ∫_(ℝ \ ℚ) x dμ(x)
- ─────────────────── = 250√2π⁶ / 27
+ ─────────────────── = 250√2π⁶ / 27 = 406.0138611108578...
    ∫_(ℚ) x dμ(x)
 
 */
