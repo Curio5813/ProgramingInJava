@@ -18,7 +18,9 @@ public class SerieDeBernoulliSomaDeFracoes {
 vão direcionar a convergência da série. O Resultado deve ser igual há (5(√2π²)/3)³,
 converge para 406.0138611108578 . Assim:
 
- [ ∫_(ℝ \ ℚ) x dμ(x) ] / [ ∫_(ℚ) x dμ(x) ] = (250 * √2π⁶) / 27
+  ∫_(ℝ \ ℚ) x dμ(x)      250√2π⁶
+ ─────────────────── = ───────────
+    ∫_(ℚ) x dμ(x)          27
 
  Representação:
  Numerador (Irracionais): ∫_(ℝ \ ℚ) x dμ(x) = 250√2π⁶
