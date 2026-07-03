@@ -1,191 +1,195 @@
 package Personal;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 public class potenciasEntrePontes {
 
-    public static boolean ehPrimo(long n) {
-        if (n < 2) return false;
-        if (n == 2) return true;
-        if (n % 2 == 0) return false;
+    private static final BigDecimal EULER =
+            new BigDecimal("2.718281828459045235360287471352662497757247093699959574966967");
 
-        long limite = (long) Math.sqrt(n);
-        for (long i = 3; i <= limite; i += 2) {
-            if (n % i == 0) return false;
-        }
-        return true;
-    }
-
-    public static void executarBuscaPrimos() {
-        long inicio = 300000;
-        long fim = 400000;
-
-        long tempoInicial = System.nanoTime();
-        int totalPrimos = 0;
-        for (long i = inicio; i <= fim; i++) {
-            if (ehPrimo(i)) {
-                totalPrimos++;
-            }
-        }
-        long tempoFinal = System.nanoTime();
-        double tempoGasto = (tempoFinal - tempoInicial) / 1_000_000.0;
-
-        System.out.printf("\n[Resultado] Total de primos encontrados: %d\n", totalPrimos);
-        System.out.printf("Tempo de execução: %.2f milissegundos\n\n", tempoGasto);
-    }
-
-    public static class ElementoQuadrado {
+    static class ResultadoQuadrado {
         BigInteger valor;
-        int posI;
-        int posF;
+        int inicio;
+        int fim;
         BigInteger raiz;
 
-        public ElementoQuadrado(BigInteger valor, int posI, int posF, BigInteger raiz) {
+        public ResultadoQuadrado(BigInteger valor, int inicio, int fim, BigInteger raiz) {
             this.valor = valor;
-            this.posI = posI;
-            this.posF = posF;
+            this.inicio = inicio;
+            this.fim = fim;
             this.raiz = raiz;
-        }
-
-        @Override
-        public String toString() {
-            return "[" + valor + ", " + posI + ", " + posF + ", " + raiz + "]";
         }
     }
 
-    public static List<ElementoQuadrado> encontrarQuadradosSubnumeros(String numeroStr) {
+    // sqrt manual (compatível com qualquer Java)
+    public static BigInteger sqrt(BigInteger x) {
+        BigInteger r = BigInteger.ZERO;
+        BigInteger bit = BigInteger.ONE.shiftLeft(x.bitLength() / 2 + 1);
+
+        while (bit.compareTo(BigInteger.ZERO) > 0) {
+            BigInteger t = r.add(bit);
+            if (t.multiply(t).compareTo(x) <= 0) {
+                r = t;
+            }
+            bit = bit.shiftRight(1);
+        }
+        return r;
+    }
+
+    public static List<ResultadoQuadrado> encontrarQuadradosSubnumeros(String numeroStr) {
         int n = numeroStr.length();
-        List<ElementoQuadrado> resultados = new ArrayList<>();
+        List<ResultadoQuadrado> resultados = new ArrayList<>();
 
         for (int tamanho = 1; tamanho <= n; tamanho++) {
             for (int inicio = 0; inicio <= n - tamanho; inicio++) {
+
                 String subStr = numeroStr.substring(inicio, inicio + tamanho);
                 if (subStr.isEmpty()) continue;
 
                 BigInteger valor = new BigInteger(subStr);
+                BigInteger raiz = sqrt(valor);
 
-                if (valor.equals(BigInteger.ZERO)) {
-                    resultados.add(new ElementoQuadrado(valor, inicio + 1, inicio + tamanho, BigInteger.ZERO));
-                } else {
-                    BigInteger raiz = valor.sqrt();
-                    if (raiz.multiply(raiz).equals(valor)) {
-                        resultados.add(new ElementoQuadrado(valor, inicio + 1, inicio + tamanho, raiz));
-                    }
+                if (raiz.multiply(raiz).equals(valor)) {
+                    resultados.add(new ResultadoQuadrado(
+                            valor,
+                            inicio + 1,
+                            inicio + tamanho,
+                            raiz
+                    ));
                 }
             }
         }
 
-        resultados.sort((o1, o2) -> o2.valor.compareTo(o1.valor));
+        resultados.sort((a, b) -> b.valor.compareTo(a.valor));
         return resultados;
     }
 
+    public static BigInteger calcularMediana(List<BigInteger> lista) {
+        if (lista == null || lista.isEmpty()) return BigInteger.ZERO;
+
+        List<BigInteger> ordenada = new ArrayList<>(lista);
+        Collections.sort(ordenada);
+
+        int n = ordenada.size();
+
+        if (n % 2 == 1) {
+            return ordenada.get(n / 2);
+        } else {
+            return ordenada.get(n / 2 - 1)
+                    .add(ordenada.get(n / 2))
+                    .divide(BigInteger.TWO);
+        }
+    }
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.println("=== MENU DE TESTES ===");
-        System.out.println("1 - Contar primos no intervalo (300k a 400k)");
-        System.out.println("2 - Procurar quadrados perfeitos na chave de 50 dígitos");
-        System.out.print("Escolha uma opção (1 ou 2): ");
-        String opcao = scanner.nextLine();
+            System.out.println("=== MENU ===");
+            System.out.println("1 - Processar chave (quadrados + fatoração heurística)");
+            System.out.print("Escolha: ");
 
-        if (opcao.equals("1")) {
-            executarBuscaPrimos();
-        } else if (opcao.equals("2")) {
-            System.out.print("\nDigite a chave pública aqui: ");
-            String modulo50Digitos = scanner.nextLine().trim();
+            String opcao = reader.readLine();
 
-            List<ElementoQuadrado> quadradosPerfeitos = encontrarQuadradosSubnumeros(modulo50Digitos);
+            if (!"1".equals(opcao)) {
+                System.out.println("Opção inválida.");
+                return;
+            }
 
-            System.out.println("\nLista de listas (ordenada por valor decrescente):");
+            System.out.print("\nDigite a chave numérica: ");
+            String numero = reader.readLine();
+
+            if (numero == null || numero.trim().isEmpty()) {
+                System.out.println("Erro: entrada vazia.");
+                return;
+            }
+
+            numero = numero.replaceAll("\\s+", "");
+
+            System.out.println("\n[*] A analisar subnúmeros...");
+
+            List<ResultadoQuadrado> quadrados = encontrarQuadradosSubnumeros(numero);
+
+            System.out.println("Quadrados encontrados: " + quadrados.size());
 
             List<BigInteger> modulacao = new ArrayList<>();
-            BigInteger moduloInteiro = new BigInteger(modulo50Digitos);
-            int tamChave = modulo50Digitos.length();
 
-            int cont = 0;
-            for (int j = 0; j < quadradosPerfeitos.size(); j++) {
-                ElementoQuadrado quadradoAtual = quadradosPerfeitos.get(j);
+            BigInteger modulo = new BigInteger(numero);
+            int tam = numero.length();
 
-                BigInteger tentativaPrimo = quadradoAtual.raiz
-                        .multiply(BigInteger.valueOf(quadradoAtual.posI))
-                        .multiply(BigInteger.valueOf(quadradoAtual.posF));
+            for (ResultadoQuadrado q : quadrados) {
 
-                int rigor = tentativaPrimo.toString().length();
-                int expoente = (tamChave / 2) - rigor;
+                BigInteger biInicio = BigInteger.valueOf(q.inicio);
+                BigInteger biFim = BigInteger.valueOf(q.fim);
 
-                if (expoente > 0) {
-                    BigInteger multiplicador = BigInteger.TEN.pow(expoente);
-                    modulacao.add(tentativaPrimo.multiply(multiplicador));
-                } else {
-                    modulacao.add(tentativaPrimo);
+                BigInteger base = q.raiz.multiply(biInicio).multiply(biFim);
+
+                BigDecimal val = new BigDecimal(base).add(EULER);
+
+                BigInteger tentativa = val.toBigInteger();
+
+                if (!tentativa.equals(BigInteger.ZERO)) {
+                    modulacao.add(tentativa);
                 }
-
-                cont++;
-                if (cont >= 5) break;
             }
 
-            BigInteger chaveEncontrada = BigInteger.ZERO;
-            cont = 0;
+            System.out.println("Modulação gerada: " + modulacao.size());
 
-            for (int j = 0; j < modulacao.size(); j++) {
-                BigInteger inicioTeste = modulacao.get(j);
+            if (modulacao.isEmpty()) {
+                System.out.println("Nenhuma modulação gerada.");
+                return;
+            }
 
-                // Força o início a ser no mínimo 2
-                if (inicioTeste.compareTo(BigInteger.TWO) < 0) {
-                    inicioTeste = BigInteger.TWO;
+            BigInteger mediana = calcularMediana(modulacao);
+            BigInteger min = Collections.min(modulacao);
+            BigInteger max = Collections.max(modulacao);
+
+            System.out.println("\nMin: " + min);
+            System.out.println("Mediana: " + mediana);
+            System.out.println("Max: " + max);
+
+            BigInteger chave = BigInteger.ZERO;
+
+            BigInteger limInf = min.multiply(BigInteger.TEN);
+            BigInteger limMed = mediana;
+            BigInteger limSup = max.divide(BigInteger.TEN);
+
+            System.out.println("\n[*] Varredura...");
+
+            // 1 - crescente
+            for (BigInteger j = limInf; j.compareTo(limMed) < 0; j = j.add(BigInteger.TWO)) {
+                if (!j.equals(BigInteger.ZERO) && modulo.mod(j).equals(BigInteger.ZERO)) {
+                    chave = j;
+                    break;
                 }
+            }
 
-                // Ajusta para o próximo ímpar se for par e maior que 2
-                if (inicioTeste.getLowestSetBit() != 0 && inicioTeste.compareTo(BigInteger.TWO) > 0) {
-                    inicioTeste = inicioTeste.add(BigInteger.ONE);
-                }
-
-                long limiteBusca = 5000000;
-                BigInteger passo = inicioTeste.equals(BigInteger.TWO) ? BigInteger.ONE : BigInteger.TWO;
-
-                BigInteger k = inicioTeste;
-                BigInteger limiteFinal = inicioTeste.add(BigInteger.valueOf(limiteBusca));
-
-                while (k.compareTo(limiteFinal) < 0) {
-                    // Só testa a divisão se o k for um número que cabe num long para usar a função ehPrimo rápido
-                    if (k.bitLength() <= 62) {
-                        long kLong = k.longValue();
-                        if (ehPrimo(kLong)) {
-                            if (moduloInteiro.remainder(k).equals(BigInteger.ZERO)) {
-                                chaveEncontrada = k;
-                                break;
-                            }
-                        }
-                    } else {
-                        // Se k for maior que o limite de um long, usa teste probabilístico nativo do BigInteger
-                        if (k.isProbablePrime(15)) {
-                            if (moduloInteiro.remainder(k).equals(BigInteger.ZERO)) {
-                                chaveEncontrada = k;
-                                break;
-                            }
-                        }
+            // 2 - decrescente
+            if (chave.equals(BigInteger.ZERO)) {
+                for (BigInteger j = limSup; j.compareTo(limMed) > 0; j = j.subtract(BigInteger.TWO)) {
+                    if (!j.equals(BigInteger.ZERO) && modulo.mod(j).equals(BigInteger.ZERO)) {
+                        chave = j;
+                        break;
                     }
-                    k = k.add(passo);
                 }
-
-                if (!chaveEncontrada.equals(BigInteger.ZERO)) break;
-
-                cont++;
-                if (cont >= 5) break;
             }
 
-            if (!chaveEncontrada.equals(BigInteger.ZERO)) {
-                System.out.println("Chave1: " + chaveEncontrada + " e Chave2: " + moduloInteiro.divide(chaveEncontrada));
+            if (chave.equals(BigInteger.ZERO)) {
+                System.out.println("Nenhum fator encontrado.");
             } else {
-                System.out.println("Chave1: 0 e Chave2: Fatores não encontrados no raio de busca.");
+                System.out.println("\n✔ Fator encontrado!");
+                System.out.println("p = " + chave);
+                System.out.println("q = " + modulo.divide(chave));
             }
-        } else {
-            System.out.println("Opção inválida.");
-        }
 
-        scanner.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
