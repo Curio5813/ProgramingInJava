@@ -1,6 +1,7 @@
 package BeecrowdMatematica;
 import java.util.*;
 import java.util.Scanner;
+import static java.lang.Math.sqrt;
 
 public class ItMiha {
     public static void main(String[] args) {
@@ -11,7 +12,7 @@ public class ItMiha {
         int n = 2;
         int cont = 0;
 
-        for (int i = 2; i < 200_000; i++) {
+        for (int i = 2; i < 20_000_000; i++) {
             int num = i;
             int tempI = i;
 
@@ -24,7 +25,7 @@ public class ItMiha {
                     }
                 } else { // Equivalente a: if (tempI % n != 0)
                     n += 1;
-                    if (n > tempI) {
+                    if (n > sqrt(tempI)) {
                         break;
                     }
                     cont = 0;
