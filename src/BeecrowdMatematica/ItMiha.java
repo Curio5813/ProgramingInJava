@@ -25,6 +25,9 @@ public class ItMiha {
                     }
                 } else { // Equivalente a: if (tempI % n != 0)
                     n += 1;
+                    if (n > 141422){
+                        break;
+                    }
                     if (n > sqrt(tempI)) {
                         break;
                     }
